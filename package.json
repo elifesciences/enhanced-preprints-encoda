@@ -16,5 +16,5 @@
   "resolutions": {
     "@stencila/node/@stencila/types": "2.0.0-alpha.15"
   },
-  "packageManager": "yarn@3.6.3"
+  "packageManager": "yarn@3.6.4"
 }
