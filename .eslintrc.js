@@ -15,7 +15,7 @@ module.exports = {
     }],
     "import/extensions": 0,
     "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": ["**/*.test.ts"],
+      "devDependencies": ["**/*.test.ts", "**/*.spec.ts"],
       "peerDependencies": true
     }],
     "operator-linebreak": 0,
