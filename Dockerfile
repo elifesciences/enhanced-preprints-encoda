@@ -23,6 +23,7 @@ FROM base as prod
 COPY --from=build /opt/epp-encoda/node_modules node_modules
 COPY --from=build /opt/epp-encoda/node_modules node_modules
 COPY package.json package.json
+COPY tsconfig.json tsconfig.json
 COPY src/ src/
 
 EXPOSE 3000
@@ -32,4 +33,7 @@ FROM prod as dev
 CMD [ "yarn", "start:dev" ]
 
 FROM prod as tests
+COPY jest.config.ts
+COPY jest.config.integration.ts
+COPY eslintrc.js
 CMD [ "yarn", "test" ]
