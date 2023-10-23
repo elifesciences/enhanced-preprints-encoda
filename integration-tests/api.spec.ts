@@ -10,8 +10,8 @@ describe('api', () => {
         await request(app)
           .post('/')
           .send(xml.toString())
-          // .expect(200)
-          .expect((response) => expect(response.body).toMatchObject({ version: '1.0.3' }));
+          .expect(200)
+          .then((response) => expect(response.body).toMatchObject({ version: '1.0.3' }));
       });
 
       it('should use the specified version', async () => {
@@ -19,16 +19,16 @@ describe('api', () => {
           .post('/')
           .set('Accept', 'application/vnd.elife.encoda.v1.0.1+json')
           .send(xml.toString())
-          // .expect(200)
-          .expect((response) => expect(response.body).toMatchObject({ version: '1.0.1' }));
+          .expect(200)
+          .then((response) => expect(response.body).toMatchObject({ version: '1.0.1' }));
       });
       it('should use version 2', async () => {
         await request(app)
           .post('/')
           .set('Accept', 'application/vnd.elife.encoda.v2.0.0+json')
           .send(xml.toString())
-          // .expect(200)
-          .expect((response) => expect(response.body).toMatchObject({ version: '2.0.0' }));
+          .expect(200)
+          .then((response) => expect(response.body).toMatchObject({ version: '2.0.0' }));
       });
     });
   });
