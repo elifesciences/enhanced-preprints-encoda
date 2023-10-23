@@ -33,7 +33,7 @@ FROM prod as dev
 CMD [ "yarn", "start:dev" ]
 
 FROM prod as tests
-COPY jest.config.ts
-COPY jest.config.integration.ts
-COPY eslintrc.js
+COPY jest.config.ts jest.config.ts
+COPY jest.config.integration.ts jest.config.integration.ts
+COPY eslintrc.js eslintrc.js
 CMD [ "yarn", "test" ]
