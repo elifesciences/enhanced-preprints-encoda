@@ -16,6 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: run lint
+        run: yarn lint
+      - name: run unit test
+        run: yarn test --passWithNoTests
+      - name: run integration test
+        run: yarn test:integration --passWithNoTests
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build and load test image
@@ -24,18 +34,11 @@ jobs:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          target: tests
-          load: true
+          target: prod
           tags: |
             ${{ env.IMAGE_REPO }}:test-${{ github.sha }}
-      - name: run lint
-        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn lint
-      - name: run unit test
-        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn test --passWithNoTests
-      - name: run integration test
-        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn test:integration --passWithNoTests
   build-and-push:
-    needs: [test]
+    needs: [test, build-test]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
