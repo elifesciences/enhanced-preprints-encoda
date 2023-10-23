@@ -30,8 +30,10 @@ jobs:
           load: true
           tags: |
             ${{ env.IMAGE_REPO }}:test-${{ github.sha }}
-      - name: run test
-        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn test
+      - name: run unit test
+        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn test --passWithNoTests
+      - name: run integration test
+        run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn test:integration --passWithNoTests
       - name: run lint
         run: docker run ${{ env.IMAGE_REPO }}:test-${{ github.sha }} yarn lint
   build-and-push:
