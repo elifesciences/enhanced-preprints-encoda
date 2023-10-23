@@ -30,3 +30,6 @@ CMD [ "yarn", "start" ]
 
 FROM prod as dev
 CMD [ "yarn", "start:dev" ]
+
+FROM prod as tests
+CMD [ "yarn", "test" ]
