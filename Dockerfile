@@ -36,4 +36,5 @@ FROM prod as tests
 COPY jest.config.ts jest.config.ts
 COPY jest.config.integration.ts jest.config.integration.ts
 COPY .eslintrc.js .eslintrc.js
+COPY integration-tests integration-tests
 CMD [ "yarn", "test" ]
