@@ -29,7 +29,7 @@ app.post('/', async (req, res) => {
       },
     };
 
-    res.format({
+    const versionResponders = {
       'application/vnd.elife.encoda.v1.0.3+json': async () => {
         res.json({
           version: '1.0.3',
@@ -51,14 +51,10 @@ app.post('/', async (req, res) => {
         });
         rmdirSync(tempOutput, { recursive: true });
       },
-      default: async () => {
-        const appDefaultVersion = Object.values(this)[0];
-        const configDefaultVersion = this[`application/vnd.elife.encoda.v${process.env.DEFAULT_ENCODA_VERSION}+json`];
+      default: async () => versionResponders['application/vnd.elife.encoda.v1.0.3+json'](),
+    };
 
-        // return either the configured default version if it exists, or the top most version (latest)
-        return configDefaultVersion ?? appDefaultVersion;
-      },
-    });
+    res.format(versionResponders);
   } catch (error) {
     res.status(500).json({ error });
   }
