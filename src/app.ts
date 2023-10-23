@@ -8,7 +8,7 @@ import { mkdtempSync, writeFileSync, rmdirSync } from 'fs';
 import { tmpdir } from 'os';
 
 const app = express();
-app.use(bodyParser.text({type: '*/*', limit: '50mb'}));
+app.use(bodyParser.text({ type: '*/*', limit: '50mb' }));
 
 app.post('/', async (req, res) => {
   try {
@@ -36,43 +36,39 @@ app.post('/', async (req, res) => {
       format: 'json',
     };
 
-    res.format({
+    const versionResponders = {
       'application/vnd.elife.encoda.v1.0.3+json': async () => {
         res.json({
-          json: await convert_1_0_1(xmlFile, undefined, parameters),
+          version: '1.0.3',
+          json: await convert_1_0_3(xmlFile, undefined, parameters),
         });
-        console.log(`remove ${tempOutput}`);
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v1.0.2+json': async () => {
         res.json({
-          json: await convert_1_0_1(xmlFile, undefined, parameters),
+          version: '1.0.2',
+          json: await convert_1_0_2(xmlFile, undefined, parameters),
         });
-        console.log(`remove ${tempOutput}`);
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v1.0.1+json': async () => {
         res.json({
+          version: '1.0.1',
           json: await convert_1_0_1(xmlFile, undefined, parameters),
         });
-        console.log(`remove ${tempOutput}`);
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v2.0.0+json': async () => {
         res.json({
+          version: '2.0.0',
           json: await convert_2_0_0.toString(await convert_2_0_0.fromPath(xmlFile, decodeParameters), encodeParameters),
         });
-        console.log(`remove ${tempOutput}`);
         rmdirSync(tempOutput, { recursive: true });
       },
-      default: async function() {
-        const appDefaultVersion = Object.values(this)[0];
-        const configDefaultVersion = this[`application/vnd.elife.encoda.v${process.env.DEFAULT_ENCODA_VERSION}+json`];
+      default: async () => versionResponders['application/vnd.elife.encoda.v1.0.3+json'](),
+    };
 
-        // return either the configured default version if it exists, or the top most version (latest)
-        return configDefaultVersion ?? appDefaultVersion;
-      }
-    });
+    res.format(versionResponders);
   } catch (error) {
     res.status(500).json({ error });
   }
