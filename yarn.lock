@@ -2214,12 +2214,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencila/encoda-2-0-0@npm:@stencila/node@2.0.0-alpha.17":
-  version: 2.0.0-alpha.17
-  resolution: "@stencila/node@npm:2.0.0-alpha.17"
+"@stencila/encoda-2-0-0@npm:@stencila/node@2.0.0-alpha.18":
+  version: 2.0.0-alpha.18
+  resolution: "@stencila/node@npm:2.0.0-alpha.18"
   dependencies:
-    "@stencila/types": 2.0.0-alpha.17
-  checksum: 1b7dcf07c4d5fe74dab27eca1f9e85ec3fce7066e1b00297014e0d8adea8ce3b5f048bee482b82cab9ba0b246f5303a22cb20436ef4a3983ea503f7a3d632ca0
+    "@stencila/types": 2.0.0-alpha.18
+  checksum: 29511fa7e2a3457102b1a611d2f47cd64287c55fa3186ec42022d9ccc5e3edf92cd6d40b7b237e1cb3ede7068135990b8993c2509f93e514ecd77f15f31a1cd5
   languageName: node
   linkType: hard
 
@@ -2336,10 +2336,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencila/types@npm:2.0.0-alpha.17":
-  version: 2.0.0-alpha.17
-  resolution: "@stencila/types@npm:2.0.0-alpha.17"
-  checksum: 0d20faed0df99bf685ae0c1e6754d3808c99ff03cdaa4782a488fe8e065c1440444950462ebcd5e0d620f076fc7cb577d753c3d90200d5f9c7c55932bf9b3045
+"@stencila/types@npm:2.0.0-alpha.18":
+  version: 2.0.0-alpha.18
+  resolution: "@stencila/types@npm:2.0.0-alpha.18"
+  checksum: daf367c23aafa83c5042ab42dda5899d411f47f5b6422928dc2aa7a1a6253cd1d23d73ec67ae8fd827ba0bc97da9df94654920040eda0df892d648a646c08dfe
   languageName: node
   linkType: hard
 
@@ -11978,7 +11978,7 @@ __metadata:
     "@stencila/encoda-1-0-1": "npm:@stencila/encoda@1.0.1"
     "@stencila/encoda-1-0-2": "npm:@stencila/encoda@1.0.2"
     "@stencila/encoda-1-0-3": "npm:@stencila/encoda@1.0.3"
-    "@stencila/encoda-2-0-0": "npm:@stencila/node@2.0.0-alpha.17"
+    "@stencila/encoda-2-0-0": "npm:@stencila/node@2.0.0-alpha.18"
     "@types/eslint": ^8.44.6
     "@types/express": ^4.17.17
     "@types/jest": ^29.5.6
