@@ -16,7 +16,7 @@
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "automerge": true,
-  }
+  },
   "packageRules": [
     {
       "matchUpdateTypes": [
