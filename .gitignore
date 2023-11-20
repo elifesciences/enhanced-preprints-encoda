@@ -1,2 +1,4 @@
 node_modules
-.yarn
+.yarn/cache/*
+.yarn/install-state.gz
+# !.yarn/releases/*
