@@ -21,7 +21,7 @@
     },
     {
       "matchPackageNames": ["@stencila/encoda"],
-      "automerge": false
+      "enabled": false
     }
   ]
 }
