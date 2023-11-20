@@ -2,5 +2,26 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "dependencyDashboardTitle":"Dependency Dashboard - EPP encoda",
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchDatasources": ["docker"],
+      "versioning": "node"
+    },
+    {
+      "matchPackageNames": ["@stencila/encoda"],
+      "automerge": false
+    }
   ]
 }
