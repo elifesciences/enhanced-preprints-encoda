@@ -4,6 +4,15 @@
     "config:recommended"
   ],
   "dependencyDashboardTitle":"Dependency Dashboard - EPP encoda",
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["node_version=(?<currentValue>.*?)-alpine"],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node",
+      "versioningTemplate": "node"
+    }
+  ],
   "packageRules": [
     {
       "matchUpdateTypes": [
