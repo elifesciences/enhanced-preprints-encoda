@@ -24,11 +24,6 @@
       "automerge": true
     },
     {
-      "matchPackageNames": ["node"],
-      "matchDatasources": ["docker"],
-      "versioning": "node"
-    },
-    {
       "matchPackageNames": ["@stencila/encoda"],
       "enabled": false
     }
