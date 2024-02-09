@@ -31,7 +31,7 @@ jobs:
       - name: run unit test
         run: yarn test --passWithNoTests
       - name: run integration test
-        run: yarn test:integration --passWithNoTests
+        run: yarn test:integration
   build-test:
     runs-on: ubuntu-latest
     steps:
