@@ -29,9 +29,8 @@ describe('api', () => {
           .set('Accept', 'application/vnd.elife.encoda.v1.0.4+json')
           .send(xml.toString())
           .expect(406)
-          .then((response) => expect(response.body).toEqual({error: 'the requested content type is not supported'}));
+          .then((response) => expect(response.body).toEqual({ error: 'the requested content type is not supported' }));
       });
-
     });
   });
 });

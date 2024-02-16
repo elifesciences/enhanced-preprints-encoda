@@ -45,7 +45,7 @@ app.post('/', async (req, res) => {
         rmdirSync(tempOutput, { recursive: true });
       },
       default: async () => {
-        res.status(406).send({error: 'the requested content type is not supported'});
+        res.status(406).send({ error: 'the requested content type is not supported' });
       },
     };
 
