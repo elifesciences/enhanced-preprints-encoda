@@ -44,7 +44,9 @@ app.post('/', async (req, res) => {
         res.json(JSON.parse(((await convert_1_0_1(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
         rmdirSync(tempOutput, { recursive: true });
       },
-      default: async () => versionResponders['application/vnd.elife.encoda.v1.0.3+json'](),
+      default: async () => {
+        res.status(406).send({error: 'the requested content type is not supported'});
+      },
     };
 
     res.format(versionResponders);

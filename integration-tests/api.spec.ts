@@ -22,6 +22,16 @@ describe('api', () => {
           .expect(200)
           .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.1+json; charset=utf-8'));
       });
+
+      it('should error if you specify wrong version', async () => {
+        await request(app)
+          .post('/')
+          .set('Accept', 'application/vnd.elife.encoda.v1.0.4+json')
+          .send(xml.toString())
+          .expect(406)
+          .then((response) => expect(response.body).toEqual({error: 'the requested content type is not supported'}));
+      });
+
     });
   });
 });
