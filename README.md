@@ -2,13 +2,9 @@
 
 This project contains a light http wrapper around the stencila encoda library, to be used as a standalone microservice in the EPP import pipeline.
 
-## Building the docker image
-
-Run `docker build -t epp-encoda --target prod .`
-
-## Running the docker image
-
-Run `docker run -p 3000:3000 epp-encoda`
+```bash
+docker compose up
+```
 
 ## Convert JATS to json with api
 

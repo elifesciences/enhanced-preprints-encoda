@@ -1,0 +1,14 @@
+services:
+  encoda:
+    build:
+      context: .
+      target: dev
+    healthcheck:
+      test: "wget --post-data '<test></test>' -O - http://localhost:3000/"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 3s
+    restart: always
+    ports:
+      - 3000:3000
