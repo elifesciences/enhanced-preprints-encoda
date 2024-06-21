@@ -11,7 +11,7 @@ describe('api', () => {
           .post('/')
           .send(xml.toString())
           .expect(200)
-          .then((response) => expect(response.body).toMatchObject({ version: '1.0.3' }));
+          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.3+json; charset=utf-8'));
       });
 
       it('should use the specified version', async () => {
@@ -20,7 +20,16 @@ describe('api', () => {
           .set('Accept', 'application/vnd.elife.encoda.v1.0.1+json')
           .send(xml.toString())
           .expect(200)
-          .then((response) => expect(response.body).toMatchObject({ version: '1.0.1' }));
+          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.1+json; charset=utf-8'));
+      });
+
+      it('should error if you specify wrong version', async () => {
+        await request(app)
+          .post('/')
+          .set('Accept', 'application/vnd.elife.encoda.v1.0.4+json')
+          .send(xml.toString())
+          .expect(406)
+          .then((response) => expect(response.body).toEqual({ error: 'the requested content type is not supported' }));
       });
       it('should use version 2', async () => {
         await request(app)

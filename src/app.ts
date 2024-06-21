@@ -40,24 +40,15 @@ app.post('/', async (req, res) => {
 
     const versionResponders = {
       'application/vnd.elife.encoda.v1.0.3+json': async () => {
-        res.json({
-          version: '1.0.3',
-          json: (await convert_1_0_3(xmlFile, undefined, parameters))?.replaceAll(tempOutput, replacementPath),
-        });
+        res.json(JSON.parse(((await convert_1_0_3(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v1.0.2+json': async () => {
-        res.json({
-          version: '1.0.2',
-          json: (await convert_1_0_2(xmlFile, undefined, parameters))?.replaceAll(tempOutput, replacementPath),
-        });
+        res.json(JSON.parse(((await convert_1_0_2(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v1.0.1+json': async () => {
-        res.json({
-          version: '1.0.1',
-          json: (await convert_1_0_1(xmlFile, undefined, parameters))?.replaceAll(tempOutput, replacementPath),
-        });
+        res.json(JSON.parse(((await convert_1_0_1(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
         rmdirSync(tempOutput, { recursive: true });
       },
       'application/vnd.elife.encoda.v2.0.0+json': async () => {
@@ -67,7 +58,9 @@ app.post('/', async (req, res) => {
         });
         rmdirSync(tempOutput, { recursive: true });
       },
-      default: async () => versionResponders['application/vnd.elife.encoda.v1.0.3+json'](),
+      default: async () => {
+        res.status(406).send({ error: 'the requested content type is not supported' });
+      },
     };
 
     res.format(versionResponders);

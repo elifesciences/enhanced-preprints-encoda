@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:base"
   ],
-  "dependencyDashboardTitle":"Dependency Dashboard - EPP encoda",
+  "dependencyDashboardTitle":"Dependency Dashboard - EPP encoda API",
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
@@ -19,17 +19,17 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     },
     {
-      "matchPackageNames": ["@stencila/encoda"],
+      "matchPackageNames": ["node"],
+      "matchDatasources": ["docker"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["@stencila/encoda"],
+      "automerge": false
     }
   ]
 }
