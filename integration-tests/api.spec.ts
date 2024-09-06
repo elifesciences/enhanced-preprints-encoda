@@ -11,22 +11,34 @@ describe('api', () => {
           .post('/')
           .send(xml.toString())
           .expect(200)
-          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.3+json; charset=utf-8'));
+          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.6+json; charset=utf-8'));
       });
 
-      it('should use the specified version', async () => {
+      it.each([
+        '1.0.1',
+        '1.0.2',
+        '1.0.3',
+        '1.0.6',
+      ])('should use the specified version - %s', async (version) => {
+        const mimeType = `application/vnd.elife.encoda.v${version}+json`;
         await request(app)
           .post('/')
-          .set('Accept', 'application/vnd.elife.encoda.v1.0.1+json')
+          .set('Accept', mimeType)
           .send(xml.toString())
           .expect(200)
-          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.1+json; charset=utf-8'));
+          .then((response) => expect(response.headers['content-type']).toBe(`${mimeType}; charset=utf-8`));
       });
 
-      it('should error if you specify wrong version', async () => {
+      it.each([
+        'unknown',
+        '1.0.4',
+        '1.0.5',
+        '1.0.7',
+      ])('should error if you specify wrong version - %s', async (version) => {
+        const mimeType = `application/vnd.elife.encoda.v${version}+json`;
         await request(app)
           .post('/')
-          .set('Accept', 'application/vnd.elife.encoda.v1.0.4+json')
+          .set('Accept', mimeType)
           .send(xml.toString())
           .expect(406)
           .then((response) => expect(response.body).toEqual({ error: 'the requested content type is not supported' }));
