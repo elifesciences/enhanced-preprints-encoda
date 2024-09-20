@@ -11,7 +11,7 @@ describe('api', () => {
           .post('/')
           .send(xml.toString())
           .expect(200)
-          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.6+json; charset=utf-8'));
+          .then((response) => expect(response.headers['content-type']).toBe('application/vnd.elife.encoda.v1.0.7+json; charset=utf-8'));
       });
 
       it.each([
@@ -19,6 +19,7 @@ describe('api', () => {
         '1.0.2',
         '1.0.3',
         '1.0.6',
+        '1.0.7',
       ])('should use the specified version - %s', async (version) => {
         const mimeType = `application/vnd.elife.encoda.v${version}+json`;
         await request(app)
@@ -33,7 +34,7 @@ describe('api', () => {
         'unknown',
         '1.0.4',
         '1.0.5',
-        '1.0.7',
+        '1.0.8',
       ])('should error if you specify wrong version - %s', async (version) => {
         const mimeType = `application/vnd.elife.encoda.v${version}+json`;
         await request(app)
