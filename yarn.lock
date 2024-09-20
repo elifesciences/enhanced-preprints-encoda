@@ -2284,16 +2284,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencila/encoda-1-0-2@npm:@stencila/encoda@1.0.2":
-  version: 1.0.2
-  resolution: "@stencila/encoda@npm:1.0.2"
+"@stencila/encoda-1-0-2@npm:@stencila/encoda@1.0.7":
+  version: 1.0.7
+  resolution: "@stencila/encoda@npm:1.0.7"
   dependencies:
     "@stencila/jesta": ^1.10.5
     "@stencila/logga": ^4.0.0
     "@stencila/thema": ^2.24.4
     appdata-path: ^1.0.0
     asciimath2tex: "https://github.com/christianp/asciimath2tex/tarball/dedc42ddfdb80678bfb09864cfa76afb0a4b5f44"
-    async-lock: ^1.4.0
+    async-lock: ^1.4.1
     bin-wrapper: ^4.1.0
     citation-js: ^0.5.7
     collapse-whitespace: ^1.1.7
@@ -2301,19 +2301,19 @@ __metadata:
     datapackage: ^1.1.10
     escape-html: ^1.0.3
     fastest-levenshtein: ^1.0.16
-    fp-ts: ^2.16.1
-    fs-extra: ^11.1.1
+    fp-ts: ^2.16.5
+    fs-extra: ^11.2.0
     get-stdin: ^8.0.0
     github-slugger: ^1.5.0
     globby: ^11.1.0
     hyperscript: ^2.0.2
     is-docker: ^2.2.1
     jimp: ^0.22.10
-    js-beautify: ^1.14.9
+    js-beautify: ^1.15.1
     js-yaml: ^4.1.0
     jsdom: ^22.1.0
     json5: ^2.2.3
-    jsonld: ^8.2.0
+    jsonld: ^8.3.2
     mathjax-node: ^2.1.1
     mdast-util-compact: ^3.0.0
     mime: ^3.0.0
@@ -2321,7 +2321,6 @@ __metadata:
     papaparse: ^5.4.1
     parse-author: ^2.0.0
     parse-full-name: ^1.2.6
-    patch-package: 6.5.1
     pdf-lib: ^1.17.1
     plotly.js-dist: ^1.58.5
     png-chunk-text: ^1.0.0
@@ -2334,7 +2333,7 @@ __metadata:
     remark-math: ^3.0.1
     remark-parse: ^8.0.3
     remark-stringify: ^8.1.1
-    remark-sub-super: ^1.0.20
+    remark-sub-super: ^1.0.21
     sentence-case: ^3.0.4
     tar: ^6.1.15
     temp-dir: ^2.0.0
@@ -2349,10 +2348,10 @@ __metadata:
     xlsx: ^0.18.5
     xml-js: ^1.6.11
   peerDependencies:
-    "@stencila/schema": ^1.9.0
+    "@stencila/schema": 1.9.0
   bin:
     encoda: dist/index.js
-  checksum: e9251a1d454d1abe5b31d0392ed08956b80dd674d2310867f0e55cd1909f50e807d652d2d70998175ab9be9d36f94f903625df69252b0873c5260a5551b078c7
+  checksum: 498033b11a2139a3c1d5a8eee64c13101da46fe5f654598b504d7d2f3a9b980f494ce19e1226931d4509f562e480fd5d8491173c4c9538582fbc8a40b55d5aa5
   languageName: node
   linkType: hard
 
@@ -12167,7 +12166,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@stencila/encoda-1-0-1": "npm:@stencila/encoda@1.0.1"
-    "@stencila/encoda-1-0-2": "npm:@stencila/encoda@1.0.2"
+    "@stencila/encoda-1-0-2": "npm:@stencila/encoda@1.0.7"
     "@stencila/encoda-1-0-3": "npm:@stencila/encoda@1.0.3"
     "@stencila/encoda-1-0-6": "npm:@stencila/encoda@1.0.6"
     "@types/eslint": ^8.44.6
