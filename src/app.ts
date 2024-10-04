@@ -23,19 +23,15 @@ app.post('/', async (req, res) => {
     const xmlFile = `${tempOutput}/article.xml`;
     writeFileSync(xmlFile, xmlData);
 
-    const shouldReshape = req.query.reshape !== 'false';
-
     const parameters = {
       from: 'jats',
       to: 'json',
       encodeOptions: {
         isBundle: false,
       },
-      ...!shouldReshape ? {
-        decodeOptions: {
-          shouldReshape,
-        },
-      } : {},
+      decodeOptions: {
+        shouldReshape: false,
+      },
     };
 
     const replacementPath = typeof req.query.replacementPath === 'string' ? req.query.replacementPath : '';

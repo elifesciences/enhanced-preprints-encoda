@@ -12,12 +12,6 @@ docker compose up
 cat [LOCATION OF JATS XML] | curl -X POST --data @- http://localhost:3000/
 ```
 
-## Convert JATS to json with api (disable reshape)
-
-```bash
-cat [LOCATION OF JATS XML] | curl -X POST --data @- "http://localhost:3000/?reshape=false"
-```
-
 ## Convert JATS to json with api target a specific encoda version
 
 ```bash
