@@ -22,7 +22,8 @@ app.post('/', async (req, res) => {
 
     // write to disk
     const tempOutput = mkdtempSync(`${tmpdir()}/encoda`);
-    const xmlFile = `${tempOutput}/article.xml`;
+    const tempOutputWithSlash = `${tempOutput}/`;
+    const xmlFile = `${tempOutputWithSlash}article.xml`;
     writeFileSync(xmlFile, xmlData);
 
     const parameters = {
@@ -37,34 +38,35 @@ app.post('/', async (req, res) => {
     };
 
     const replacementPath = typeof req.query.replacementPath === 'string' ? req.query.replacementPath : '';
+    const replacementPathWithSlash = replacementPath.length > 0 && replacementPath.slice(-1) !== '/' ? `${replacementPath}/` : replacementPath;
 
     const versionResponders = {
       'application/vnd.elife.encoda.v1.0.9+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_9(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_9(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.8+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_8(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_8(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.7+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_7(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_7(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.6+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_6(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_6(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.3+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_3(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_3(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.2+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_2(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_2(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       'application/vnd.elife.encoda.v1.0.1+json': async () => {
-        res.json(JSON.parse(((await convert_1_0_1(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutput, replacementPath)));
+        res.json(JSON.parse(((await convert_1_0_1(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
       },
       default: async () => {
