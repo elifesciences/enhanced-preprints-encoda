@@ -17,3 +17,13 @@ cat [LOCATION OF JATS XML] | curl -X POST --data @- http://localhost:3000/
 ```bash
 cat [LOCATION OF JATS XML] | curl -X POST -H "Accept: application/vnd.elife.encoda.v1.0.1+json" --data @- http://localhost:3000/
 ```
+
+## Optionally set a replacement path
+
+This replaces the path of other resources pointed to in original Meca with their new location in S3.
+
+i.e. if the XML file was in the Zip as `content/123/123.xml` for id 456 version 1, we pass in `456/v1/content/123` as a replacement paths to other resources.
+
+```bash
+cat [LOCATION OF JATS XML] | curl -X POST --data @- http://localhost:3000?replacementPath=456/v1/content/123
+```
