@@ -2212,6 +2212,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stencila/encoda-1-0-10@npm:@stencila/encoda@1.0.10":
+  version: 1.0.10
+  resolution: "@stencila/encoda@npm:1.0.10"
+  dependencies:
+    fp-ts: ^2.16.5
+    fs-extra: ^11.2.0
+    get-stdin: ^8.0.0
+    js-yaml: ^4.1.0
+    mathjax-node: ^2.1.1
+    mime: ^3.0.0
+    tempy: ^1.0.1
+    to-vfile: ^6.1.0
+    vfile: ^4.2.1
+    xml-js: ^1.6.11
+  peerDependencies:
+    "@stencila/schema": 1.9.0
+  checksum: 6498aec1c4ed4da01e027f4ba203d7de02c9ddde48f6c706b827e631c6fa263730130fd25df23e5e6874914a10c8fce19b7fc2a8978b8df247ff35b05fbf5bb3
+  languageName: node
+  linkType: hard
+
 "@stencila/encoda-1-0-1@npm:@stencila/encoda@1.0.1":
   version: 1.0.1
   resolution: "@stencila/encoda@npm:1.0.1"
@@ -12387,6 +12407,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@stencila/encoda-1-0-1": "npm:@stencila/encoda@1.0.1"
+    "@stencila/encoda-1-0-10": "npm:@stencila/encoda@1.0.10"
     "@stencila/encoda-1-0-2": "npm:@stencila/encoda@1.0.2"
     "@stencila/encoda-1-0-3": "npm:@stencila/encoda@1.0.3"
     "@stencila/encoda-1-0-6": "npm:@stencila/encoda@1.0.6"

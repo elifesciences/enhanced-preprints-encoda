@@ -7,6 +7,7 @@ import { convert as convert_1_0_6 } from '@stencila/encoda-1-0-6';
 import { convert as convert_1_0_7 } from '@stencila/encoda-1-0-7';
 import { convert as convert_1_0_8 } from '@stencila/encoda-1-0-8';
 import { convert as convert_1_0_9 } from '@stencila/encoda-1-0-9';
+import { convert as convert_1_0_10 } from '@stencila/encoda-1-0-10';
 import { mkdtempSync, writeFileSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
 
@@ -41,6 +42,10 @@ app.post('/', async (req, res) => {
     const replacementPathWithSlash = replacementPath.length > 0 && replacementPath.slice(-1) !== '/' ? `${replacementPath}/` : replacementPath;
 
     const versionResponders = {
+      'application/vnd.elife.encoda.v1.0.10+json': async () => {
+        res.json(JSON.parse(((await convert_1_0_10(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
+        rmSync(tempOutput, { recursive: true, force: true });
+      },
       'application/vnd.elife.encoda.v1.0.9+json': async () => {
         res.json(JSON.parse(((await convert_1_0_9(xmlFile, undefined, parameters)) ?? '{}').replaceAll(tempOutputWithSlash, replacementPathWithSlash)));
         rmSync(tempOutput, { recursive: true, force: true });
