@@ -3031,13 +3031,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.44.6":
-  version: 8.44.6
-  resolution: "@types/eslint@npm:8.44.6"
+"@types/eslint@npm:^9.0.0":
+  version: 9.6.1
+  resolution: "@types/eslint@npm:9.6.1"
   dependencies:
     "@types/estree": "*"
     "@types/json-schema": "*"
-  checksum: ed8de582ab3dbd7ec0bf97d41f4f3de28dd8a37fc48bc423e1c406bbb70d1fd8c4175ba17ad6495ef9ef99a43df71421277b7a2a0355097489c4c4cf6bb266ff
+  checksum: c286e79707ab604b577cf8ce51d9bbb9780e3d6a68b38a83febe13fa05b8012c92de17c28532fac2b03d3c460123f5055d603a579685325246ca1c86828223e0
   languageName: node
   linkType: hard
 
@@ -12456,7 +12456,7 @@ __metadata:
     "@stencila/encoda-1-0-7": "npm:@stencila/encoda@1.0.7"
     "@stencila/encoda-1-0-8": "npm:@stencila/encoda@1.0.8"
     "@stencila/encoda-1-0-9": "npm:@stencila/encoda@1.0.9"
-    "@types/eslint": ^8.44.6
+    "@types/eslint": ^9.0.0
     "@types/express": ^4.17.17
     "@types/jest": ^29.5.6
     "@types/node": ^20.8.5
