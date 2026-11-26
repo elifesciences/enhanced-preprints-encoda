@@ -3959,10 +3959,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asciimath2tex@https://github.com/christianp/asciimath2tex/tarball/dedc42ddfdb80678bfb09864cfa76afb0a4b5f44":
-  version: 1.2.0
-  resolution: "asciimath2tex@https://github.com/christianp/asciimath2tex.git#commit=dedc42ddfdb80678bfb09864cfa76afb0a4b5f44"
-  checksum: 892016fc56982afbfab019a271ef819fc99df308325f66f639c6edba77d843058a48e7a93dd152a4b417fb00c53455c1b4db9ad15c3ac5bb0f19afd2e66624c1
+"asciimath2tex@npm:1.2.1":
+  version: 1.2.1
+  resolution: "asciimath2tex@npm:1.2.1"
+  checksum: 1151d723d206d4b1c1af2e12f54dde8adc8f4b365734b0d0cc6d50be7e8de651efbc1fae40f27e020d1979f3b102a2e579b602496d72c55d5868b88565b96d61
   languageName: node
   linkType: hard
 
