@@ -20,21 +20,24 @@ RUN yarn
 
 FROM base as prod
 
-COPY --from=build /opt/epp-encoda/node_modules node_modules
+# node ignores SIGTERM when it runs as PID 1, so use tini to forward signals
+RUN apk add --no-cache tini
+ENTRYPOINT [ "/sbin/tini", "--" ]
+
 COPY --from=build /opt/epp-encoda/node_modules node_modules
 COPY package.json package.json
 COPY tsconfig.json tsconfig.json
 COPY src/ src/
 
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD [ "node_modules/.bin/ts-node", "src/server.ts" ]
 
 FROM prod as dev
-CMD [ "yarn", "start:dev" ]
+CMD [ "node_modules/.bin/nodemon", "src/server.ts" ]
 
 FROM prod as tests
 COPY jest.config.ts jest.config.ts
 COPY jest.config.integration.ts jest.config.integration.ts
 COPY .eslintrc.js .eslintrc.js
 COPY integration-tests integration-tests
-CMD [ "yarn", "test" ]
+CMD [ "node_modules/.bin/jest" ]
